@@ -9,17 +9,18 @@ def create():
         print()
     
 def adding_x():
-    
-    X = int(input("Player 1 enter your move: "))-1
-    if board[X] not in ["X","O"]:
-        board[X]="X"
-        create()
-        if board[0]== board[1]==board[2] or board[0]==board[3]==board[6] or board[0]==board[4]==board[8] or board[2]==board[4]==board[6]or board[2]==board[5]==board[8] or board[1]==board[4]==board[7] or board[3]==board[4]==board[5] or board[6]==board[7]==board[8]:
-            print("You won")
+    while True:
+        
+        X = int(input("Player 1 enter your move: "))-1
+        if board[X] not in ["X","O"]:
+            board[X]="X"
             create()
-            exit()
+            if board[0]== board[1]==board[2] or board[0]==board[3]==board[6] or board[0]==board[4]==board[8] or board[2]==board[4]==board[6]or board[2]==board[5]==board[8] or board[1]==board[4]==board[7] or board[3]==board[4]==board[5] or board[6]==board[7]==board[8]:
+                print("You won")
+                exit()
+            break
     else:
-        return
+        print("Invalid move, try again")
 
 def adding_o():
     while True:
@@ -29,9 +30,9 @@ def adding_o():
             create()
             if board[0]== board[1]==board[2] or board[0]==board[3]==board[6] or board[0]==board[4]==board[8] or board[2]==board[4]==board[6]or board[2]==board[5]==board[8] or board[1]==board[4]==board[7] or board[3]==board[4]==board[5] or board[6]==board[7]==board[8]:
                 print("Second player won!")
-                create()
                 exit()
             break
+                
         else:
             print("Invalid move, try again")
 def draw():
@@ -47,12 +48,12 @@ def draw():
 
 def combine():
     adding_x()
+    draw()
     adding_o()
+    draw()
 
 while m:
     combine()
-    draw()
-
     
     
 
